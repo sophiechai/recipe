@@ -1,0 +1,30 @@
+.image {
+    width: 50%;
+    height: auto;
+}
+
+.right {
+    float: right;
+    margin-left: 20px;
+}
+
+.left-description {
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 600px) {
+    .image {
+        width: 100%;
+        height: auto;
+    }
+
+    .left {
+        margin-bottom: 30px;
+    }
+
+    .right {
+        float: none;
+        display: block;
+        margin: 0;
+    }
+}

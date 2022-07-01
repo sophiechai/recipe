@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(
+          0deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(172, 125, 136, 1) 25%,
+          rgba(248, 236, 209, 1) 87%
+  );
+  text-align: center;
+  padding: 0 10%;
+}
+
+.navMenu {
+  overflow: hidden;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+
+.navMenu a {
+  color: #07025a;
+  text-decoration: none;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  width: 120px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu a:hover {
+  color: #ac7d88;
+}
+
+@media screen and (max-width: 600px) {
+  .navMenu {
+    display: block;
+  }
+
+  .navMenu a {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 2;
+  }
+}

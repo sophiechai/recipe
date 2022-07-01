@@ -1,0 +1,13 @@
+.contact-me-btn {
+    background: #576e86;
+    border: none;
+    padding: 8px 10px 8px 10px;
+    border-radius: 5px;
+    color: #827397;
+    margin: 0 5%;
+    font-family: "Montserrat", sans-serif;
+}
+
+.contact-me {
+    padding-top: 60px;
+}

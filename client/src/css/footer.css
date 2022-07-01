@@ -1,0 +1,21 @@
+.bottom-container {
+    line-height: 2;
+    margin-top: 30px;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.copyright {
+    color: #dcd6f7;
+}
+
+.footer-link {
+    color: #dcd6f7;
+    text-decoration: none;
+    margin: auto 10px;
+}
+
+.footer-link:hover {
+    color: #fddb3a;
+}
