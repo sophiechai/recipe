@@ -23,19 +23,19 @@ export const deleteRecipeAsync = createAsyncThunk(
     }
 );
 
+export const deleteRecipesAsync = createAsyncThunk(
+    actionTypes.DELETE_RECIPES,
+    async (recipe) => {
+        return await RecipeService.deleteRecipes({recipe});
+    }
+);
+
 export const sortRecipeAsync = createAsyncThunk(
     actionTypes.FILTER_RECIPE,
     async (recipe) => {
         return await RecipeService.sortRecipe({recipe});
     }
 );
-
-// export const getOneRecipeAsync = createAsyncThunk(
-//     actionTypes.GET_ONE_RECIPE,
-//     async (recipe) => {
-//         return await RecipeService.getOneRecipe({recipe});
-//     }
-// );
 
 export const updateRecipeAsync = createAsyncThunk(
     actionTypes.UPDATE_RECIPE,

@@ -7,12 +7,12 @@ import {useDispatch} from "react-redux";
 export default function EditDialog(props) {
 
 	const [inputs, setInputs] = useState({
-		title: props.title,
-		ingredients: props.ingredients,
-		instructions: props.instructions,
-		image: props.image,
-		tips: props.tips,
-		time: props.time
+		title: props.obj.title,
+		ingredients: props.obj.ingredients,
+		instructions: props.obj.instructions,
+		image: props.obj.image,
+		tips: props.obj.tips,
+		time: props.obj.time
 	});
 
 	const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function EditDialog(props) {
 
 	const handleSave = async (event) => {
 		event.preventDefault();
-		await dispatch(updateRecipeAsync({"index": props.index, inputs}));
+		await dispatch(updateRecipeAsync({"id": props.obj._id, inputs}));
 		await dispatch(getRecipesAsync());
 		handleClick();
 	};

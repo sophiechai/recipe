@@ -2,10 +2,9 @@ import "../css/form.css";
 import { useSelector, useDispatch } from "react-redux";
 // import { addRecipe } from "../actions/index.js";
 import { useState } from "react";
-import {addRecipeAsync} from '../redux/recipes/thunks';
+import {addRecipeAsync, getRecipesAsync} from '../redux/recipes/thunks';
 
 export default function Form() {
-	const count = useSelector((state) => state.modifyRecipe);
 
 	const dispatch = useDispatch();
 
@@ -16,7 +15,7 @@ export default function Form() {
 		const value = event.target.value;
 		if (name === "image") {
 			console.log("in form ");
-			console.log(URL.createObjectURL(event.target.files[0]));
+			console.log(event.target.files[0]);
 			setInputs((values) => ({
 				...values,
 				[name]: URL.createObjectURL(event.target.files[0])
@@ -26,11 +25,9 @@ export default function Form() {
 		}
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log("inputs: ");
-		console.log(inputs);
-		dispatch(addRecipeAsync(inputs));
+		await dispatch(addRecipeAsync(inputs));
 	};
 
 	const resetForm = (event) => {

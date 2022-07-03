@@ -7,6 +7,19 @@ var indexRouter = require('./routes/index');
 var recipesRouter = require('./routes/recipes');
 var cors = require('cors');
 
+const mongoose = require('mongoose');
+const queries = require('./queries');
+const generateData = require('./generate-data');
+
+main().catch(err => console.log(err));
+
+async function main() {
+	console.log("connecting :)");
+	await mongoose.connect('mongodb://localhost:27017/sandbox');
+
+	// await generateData();
+}
+
 var app = express();
 app.use(cors());
 

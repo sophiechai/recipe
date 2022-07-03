@@ -4,22 +4,16 @@ import InfoDialog from "./InfoDialog";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import {useEffect, useState} from "react";
-import {getRecipesAsync, deleteRecipeAsync, sortRecipeAsync} from "../redux/recipes/thunks";
+import {getRecipesAsync, deleteRecipeAsync, sortRecipeAsync, deleteRecipesAsync} from "../redux/recipes/thunks";
 import EditDialog from "./EditDialog";
 
 export default function Cards() {
 	const currentRecipe = useSelector((state) => state.recipes.list);
 
-	const [index, setIndex] = useState(0);
-	const [title, setTitle] = useState("");
-	const [instructions, setInstructions] = useState("");
-	const [ingredients, setIngredients] = useState("");
-	const [tips, setTips] = useState("");
-	const [time, setTime] = useState(0);
-	const [image, setImage] = useState(null);
 	const [seenInfoDialog, setSeenInfoDialog] = useState(false);
 	const [seenEditDialog, setSeenEditDialog] = useState(false);
 
+	const [selectedRecipe, setSelectedRecipe] = useState({});
 	const [query, setQuery] = useState("");
 
 	useEffect(() => {
@@ -31,43 +25,27 @@ export default function Cards() {
 	const toggleInfoDialog = (props) => {
 		setSeenInfoDialog(!seenInfoDialog);
 		if (!seenInfoDialog) {
-			setTitle(props.title);
-			setIngredients(props.ingredients);
-			setInstructions(props.instructions);
-			setImage(props.image);
-			setTips(props.tips);
-			setTime(props.time);
+			setSelectedRecipe(props);
 		}
 	};
 
 	const toggleEditDialog = (props) => {
 		setSeenEditDialog(!seenEditDialog);
 		if (!seenEditDialog) {
-			setTitle(props.title);
-			setIngredients(props.ingredients);
-			setInstructions(props.instructions);
-			setImage(props.image);
-			setTips(props.tips);
-			setTime(props.time);
+			setSelectedRecipe(props);
 		}
 	};
 
-	const handleDelete = async (event) => {
-		let deleteId = event.target.id;
-		let index = deleteId.charAt(deleteId.length - 1);
-
-		await dispatch(deleteRecipeAsync({"index": index}));
-		await dispatch(getRecipesAsync());
+	const handleDelete = async (props) => {
+		await dispatch(deleteRecipeAsync({"id": props._id}));
 	};
 
 	const handleDeleteAll = async () => {
-		await dispatch(deleteRecipeAsync({"index": -2}));
-		await dispatch(getRecipesAsync());
+		await dispatch(deleteRecipesAsync());
 	};
 
 	const handleSort = async (event) => {
 		await dispatch(sortRecipeAsync({"sortBy": event.target.id}));
-		await dispatch(getRecipesAsync());
 	};
 
 	return (
@@ -108,7 +86,7 @@ export default function Cards() {
 				.map((recipe, index) => (
 					<div className="grid-item">
 						<span className="edit" id={"edit-sign-" + index} onClick={() => toggleEditDialog(recipe)}>edit</span>
-            			<span className="close" id={"delete-sign-" + index} onClick={handleDelete}>&times; delete</span>
+            			<span className="close" id={"delete-sign-" + index} onClick={() => handleDelete(recipe)}>&times; delete</span>
 						<br />
 						<h2>{recipe.title.toUpperCase()}</h2>
 						<img src={recipe.image} alt={recipe.title} />
@@ -121,23 +99,14 @@ export default function Cards() {
 			{seenInfoDialog ? (
 				<InfoDialog
 					toggle={toggleInfoDialog}
-					title={title}
-					ingredients={ingredients}
-					instructions={instructions}
-					tips={tips}
+					obj={selectedRecipe}
 				/>
 			) : null}
 
 			{seenEditDialog ? (
 				<EditDialog
 					toggle={toggleEditDialog}
-					index={index}
-					title={title}
-					ingredients={ingredients}
-					instructions={instructions}
-					tips={tips}
-					time={time}
-					image={image}
+					obj={selectedRecipe}
 				/>
 			) : null}
 		</div>
