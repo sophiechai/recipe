@@ -84,12 +84,12 @@ export default function Cards() {
 					}
 				})
 				.map((recipe, index) => (
-					<div className="grid-item">
+					<div className="grid-item" key={index}>
 						<span className="edit" id={"edit-sign-" + index} onClick={() => toggleEditDialog(recipe)}>edit</span>
             			<span className="close" id={"delete-sign-" + index} onClick={() => handleDelete(recipe)}>&times; delete</span>
 						<br />
 						<h2>{recipe.title.toUpperCase()}</h2>
-						<img src={recipe.image} alt={recipe.title} />
+						{/*<img src={recipe.image} alt={recipe.title} />*/}
 						<h4>Time taken: {recipe.time} minutes</h4>
 						<button className="show-more" onClick={() => toggleInfoDialog(recipe)}>
 							See More

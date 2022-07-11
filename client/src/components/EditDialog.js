@@ -102,12 +102,12 @@ export default function EditDialog(props) {
 						></textarea>
 					</label>
 
-					<label>
-						<span>Upload&nbsp;image:</span>
-						<input type="file" name="image"
-							   onChange={handleChange}
-							   required />
-					</label>
+					{/*<label>*/}
+					{/*	<span>Upload&nbsp;image:</span>*/}
+					{/*	<input type="file" name="image"*/}
+					{/*		   onChange={handleChange}*/}
+					{/*		   required />*/}
+					{/*</label>*/}
 
 
 					<label className="note">* separate items using semicolon</label>

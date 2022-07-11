@@ -1,17 +1,17 @@
 import "../css/infoDialog.css";
 import {useState} from "react";
 
-function Instruction(props) {
-	return <li>{props.instruction}</li>;
-}
-
-function Ingredient(props) {
-	return <li>{props.ingredient}</li>;
-}
-
-function Tip(props) {
-	return <li>{props.tip}</li>;
-}
+// function Instruction(props) {
+// 	return <li key={props.index}>{props.instruction}</li>;
+// }
+//
+// function Ingredient(props) {
+// 	return <li key={props.index}>{props.ingredient}</li>;
+// }
+//
+// function Tip(props) {
+// 	return <li key={props.index}>{props.tip}</li>;
+// }
 
 export default function InfoDialog(props) {
 
@@ -36,23 +36,26 @@ export default function InfoDialog(props) {
 
 				<h3>Ingredients</h3>
 				<ol>
-					{inputs.ingredients.split(";").map((ingredient) => (
-						<Ingredient ingredient={ingredient} />
+					{inputs.ingredients.split(";").map((ingredient, index) => (
+						<li key={index}>{ingredient}</li>
+						// <Ingredient ingredient={ingredient} index={index} />
 					))}
 				</ol>
 
 				<h3>Instructions</h3>
 				<ol>
-					{inputs.instructions.split(";").map((instruction) => (
-						<Instruction instruction={instruction} />
+					{inputs.instructions.split(";").map((instruction, index) => (
+						<li key={index}>{instruction}</li>
+						// <Instruction instruction={instruction} index={index} />
 					))}
 				</ol>
 
 				<h3>Tips & Notes</h3>
 				{inputs.tips !== undefined ? (
 					<ul>
-						{inputs.tips.split(";").map((tip) => (
-							<Tip tip={tip} />
+						{inputs.tips.split(";").map((tip, index) => (
+							<li key={index}>{tip}</li>
+							// <Tip tip={tip} index={index} />
 						))}
 					</ul>) : (
 						<p>N/A</p>

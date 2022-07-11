@@ -14,11 +14,11 @@ export default function Form() {
 		const name = event.target.name;
 		const value = event.target.value;
 		if (name === "image") {
-			console.log("in form ");
-			console.log(event.target.files[0]);
+			// console.log("in form ");
+			// console.log(event.target.files[0]);
 			setInputs((values) => ({
 				...values,
-				[name]: URL.createObjectURL(event.target.files[0])
+				[name]: "https://cafedelites.com/wp-content/uploads/2019/01/Butter-Chicken-IMAGE-27.jpg"
 			}));
 		} else {
 			setInputs((values) => ({ ...values, [name]: value }));
@@ -85,10 +85,10 @@ export default function Form() {
 					></textarea>
 				</label>
 
-				<label>
-					<span>Upload&nbsp;image:</span>
-					<input type="file" name="image" onChange={handleChange} required />
-				</label>
+				{/*<label>*/}
+				{/*	<span>Upload&nbsp;image:</span>*/}
+				{/*	<input type="file" name="image" onChange={handleChange} required />*/}
+				{/*</label>*/}
 
 
 				<label className="note">* separate items using semicolon</label>
