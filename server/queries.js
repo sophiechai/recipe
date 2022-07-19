@@ -2,14 +2,6 @@ const Recipe = require('./model');
 
 const queries = {
     getAllRecipes: async function (filter) {
-        // Recipe.find(filter).then(function (err, recipes) {
-        //     if (err) {
-        //         console.log(err);
-        //     } else {
-        //         console.log("here");
-        //         return recipes;
-        //     }
-        // });
 
         const recipes = await Recipe.find(filter);
         return recipes;

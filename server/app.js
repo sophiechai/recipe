@@ -15,7 +15,9 @@ main().catch(err => console.log(err));
 
 async function main() {
 	console.log("connecting :)");
-	await mongoose.connect('mongodb://localhost:27017/sandbox');
+	await mongoose.connect("mongodb+srv://" + process.env.ATLAS_USERNAME + ":" + process.env.ATLAS_PASSWORD + "@" + process.env.DB_CLUSTER + ".mongodb.net/?retryWrites=true&w=majority",
+		{dbName: process.env.DB_NAME});
+	// await mongoose.connect('mongodb://localhost:27017/sandbox');
 
 	// await generateData();
 }

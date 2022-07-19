@@ -1,5 +1,4 @@
 const express = require('express');
-let bodyParser = require('body-parser')
 const router = express.Router();
 const { v4: uuid } = require('uuid');
 const queries = require("../queries");
