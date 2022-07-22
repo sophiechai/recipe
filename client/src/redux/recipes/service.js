@@ -1,5 +1,7 @@
+const url = "https://recipe-backend-cpsc455.herokuapp.com/recipes/";
+
 const addRecipe = async (recipe) => {
-  const response = await fetch('http://localhost:3000/recipes', {
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -16,14 +18,14 @@ const addRecipe = async (recipe) => {
 };
 
 const getRecipes = async () => {
-  const response = await fetch('http://localhost:3000/recipes', {
+  const response = await fetch(url, {
     method: 'GET'
   });
   return response.json();
 };
 
 const deleteRecipes = async () => {
-  const response = await fetch('http://localhost:3000/recipes', {
+  const response = await fetch(url , {
     method: 'DELETE',
   });
 
@@ -36,7 +38,7 @@ const deleteRecipes = async () => {
 };
 
 const deleteRecipe = async (recipe) => {
-  const response = await fetch('http://localhost:3000/recipes/' + recipe.recipe.id, {
+  const response = await fetch(url + recipe.recipe.id, {
     method: 'DELETE',
   });
 
@@ -49,7 +51,7 @@ const deleteRecipe = async (recipe) => {
 };
 
 const sortRecipe = async (recipe) => {
-  let link = 'http://localhost:3000/recipes/sort/' + recipe.recipe.sortBy;
+  let link = url + 'sort/' + recipe.recipe.sortBy;
   const response = await fetch(link, {
     method: 'GET',
   });
@@ -57,8 +59,7 @@ const sortRecipe = async (recipe) => {
 };
 
 const updateRecipe = async (recipe) => {
-  let link = 'http://localhost:3000/recipes/' + recipe.recipe.id;
-  const response = await fetch(link, {
+  const response = await fetch(url + recipe.recipe.id, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
